@@ -1,2 +1,7 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h1>Show Lists</h1>
+
+<%= @list.title %>
+<%= @list.author %>
+<%= @list.body %>
+
+<%= link_to 'Back', list_path %>
