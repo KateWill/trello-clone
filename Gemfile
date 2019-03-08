@@ -35,6 +35,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem "materialize-sass"
+gem 'jquery-ui-rails'
+
 
 group :development, :test do
   gem 'pry'
