@@ -4,11 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+  <i class="material-icons">email</i>
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn waves-effect waves-light">
+    <i class="material-icons right">send</i>
     <%= f.submit "Send me reset password instructions" %>
   </div>
 <% end %>
