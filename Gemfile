@@ -18,8 +18,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem "materialize-sass"
+gem 'semantic-ui-sass'
 gem 'jquery-ui-rails'
+
 
 
 group :development, :test do
