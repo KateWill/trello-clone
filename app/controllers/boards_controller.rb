@@ -1,8 +1,6 @@
 class BoardsController < ApplicationController
-<<<<<<< HEAD
 
-=======
->>>>>>> 'added board model and controller'
+
   def new
   end
 
