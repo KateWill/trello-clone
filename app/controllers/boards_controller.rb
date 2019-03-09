@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @boards = Board.all
@@ -18,7 +19,8 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @boardmodel.save
-      redirect_to boards_path
+      flash[:success] = 'Your Board was Created!'
+      redirect_to new_board_path
     else
       render :new
     end
@@ -27,7 +29,7 @@ class BoardsController < ApplicationController
   def update
     @board = Board.find_by(params[:id])
     if @board.update(board_params)
-      redirect_to boards_path
+      redirect_to edit_board_path
     else
       render :edit
     end
@@ -38,7 +40,7 @@ class BoardsController < ApplicationController
   def destroy
     @board = Board.find_by(params[:id])
     @board.destroy
-    redirect_to board_path
+    redirect_to boards_path
   end
 
   private
