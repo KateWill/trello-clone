@@ -1,44 +1,42 @@
+
 class BoardsController < ApplicationController
-  before_action :authenticate_user!
+  
+  before_action :set_board_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = Board.all
-    @board = Board.new
-  end
-
-  def new
-    @board = Board.new
+    @boards = current_user.boards
   end
 
   def show
   end
 
-  def edit
+  def new
+    @board = current_user.boards.new
   end
 
   def create
-    @board = Board.new(board_params)
-    if @boardmodel.save
-      flash[:success] = 'Your Board was Created!'
-      redirect_to new_board_path
+    @board = current_user.boards.new(board_params)
+
+    if @board.save
+      
+      redirect_to boards_path
     else
       render :new
     end
   end
+  
+  def edit
+  end
 
   def update
-    @board = Board.find_by(params[:id])
     if @board.update(board_params)
-      redirect_to edit_board_path
+      redirect_to boards_path
     else
       render :edit
     end
   end
 
-
-
   def destroy
-    @board = Board.find_by(params[:id])
     @board.destroy
     redirect_to boards_path
   end
@@ -46,5 +44,8 @@ class BoardsController < ApplicationController
   private
     def board_params
       params.require(:board).permit(:name)
+    end
+    def set_board_id
+      @board = current_user.boards.find(params[:id])
     end
 end
